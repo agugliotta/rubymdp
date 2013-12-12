@@ -14,7 +14,6 @@ class Compare
     private
 
     def char_cmp(cs,ct)
-        # puts "#{cs} == #{ct} => #{cs==ct ? 0 : 1}"
         cs==ct ? 0 : 1
     end
 end
