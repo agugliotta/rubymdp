@@ -96,7 +96,7 @@ class Digraph
                     smallest = previous[smallest]
                 end
                 path.push(origin)
-                return "Path #{path.reverse} #{distance[destination]}"
+                return {"path" => path.reverse, "cost" => distance[destination]}
             end
 
             if distance[smallest] == infinite
@@ -120,39 +120,3 @@ class Digraph
 
 
 end
-
-g = Digraph.new
-
-#POR PRECIO
-# g.push_edge('A', 'B', '100')
-# g.push_edge('B', 'Z', '100')
-# g.push_edge('A', 'Z', '300')
-
-# g.push_edge("A", "B", "50")
-# g.push_edge("A", "B", "300")
-# g.push_edge("A", "C", "175")
-# g.push_edge("B", "C", "75")
-# g.push_edge("B", "Z", "250")
-# g.push_edge("C", "B", "50")
-# g.push_edge("C", "Z", "100")
-
-#POR HORARIO
-#el camino lo hace bien pero no calculo bien las horas
-#no se puede usar la diferencia entre el horario de llegada y de salida
-# se debería tomar la primera hora de A=>B (si son 2 cual se toma?)
-#y la ultima hora de B=>Z
-# g.push_edge("A", "B", "1")
-# g.push_edge("A", "B", "1")
-# g.push_edge("A", "C", "1.5")
-# g.push_edge("B", "C", "1")
-# g.push_edge("B", "Z", "1.5")
-# g.push_edge("C", "B", "1")
-# g.push_edge("C", "Z", "3")
-# Path ["A", "B", "Z"]
-
-# g.push_edge('A', 'B', '1')
-# g.push_edge('B', 'Z', '2')
-# g.push_edge('A', 'Z', '2')
-# Path ["A", "Z"]
-
-# puts g.shortest_path_between('A','Z')
