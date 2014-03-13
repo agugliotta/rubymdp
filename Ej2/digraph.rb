@@ -31,11 +31,6 @@ class Edge
     def size
         @destinations.size
     end
-
-    def show
-        puts name.to_s + '=>' + destination.to_s
-    end
-
 end
 
 class Digraph
@@ -52,9 +47,7 @@ class Digraph
         @list.push({'origin' => node, 'destination' => destination, 'value' => value})
         if @vertices.has_key?(node)
             @vertices[node].push_neighbor(destination,value)
-            puts "adding #{node} => #{destination}"
         else
-            puts "adding #{node} => #{destination}"
             edge = Edge.new(node)
             edge.push_neighbor(destination,value)
             @vertices[node] = edge
@@ -93,25 +86,12 @@ class Digraph
             previous[vertex] = nil
         end
 
-        puts "========================================="
-        puts distance.inspect
-        puts "Destination #{destination}"
-        puts "========================================="
-
         #start the search
         while nodes.size != 0
             smallest = nodes.pop
-            puts "Smallest #{smallest} Node size #{nodes.size}"
-            puts "Distance #{distance.inspect}"
-
             if smallest == destination
                 path = []
-                #distance[smallest]} tiene el valor
-                #puts "Valor #{distance[smallest]}"
                 while previous[smallest]
-                    ##### Calculate amount ######
-                    # value += edge_value(previous[smallest],smallest)
-                    ##############################
                     path.push(smallest)
                     smallest = previous[smallest]
                 end
@@ -126,7 +106,6 @@ class Digraph
                 while @vertices[smallest].has_destinations?
                     neighbor = @vertices[smallest].pop_neighbor
                     alt = distance[smallest].to_i + neighbor['value'].to_i
-                    puts "Dest #{neighbor['destination']} #{nodes.size}"
                     if alt < distance[neighbor['destination']].to_i
                         distance[neighbor['destination']] = alt
                         previous[neighbor['destination']] = smallest
@@ -149,13 +128,13 @@ g = Digraph.new
 # g.push_edge('B', 'Z', '100')
 # g.push_edge('A', 'Z', '300')
 
-g.push_edge("A", "B", "50")
-g.push_edge("A", "B", "300")
-g.push_edge("A", "C", "175")
-g.push_edge("B", "C", "75")
-g.push_edge("B", "Z", "250")
-g.push_edge("C", "B", "50")
-g.push_edge("C", "Z", "100")
+# g.push_edge("A", "B", "50")
+# g.push_edge("A", "B", "300")
+# g.push_edge("A", "C", "175")
+# g.push_edge("B", "C", "75")
+# g.push_edge("B", "Z", "250")
+# g.push_edge("C", "B", "50")
+# g.push_edge("C", "Z", "100")
 
 #POR HORARIO
 #el camino lo hace bien pero no calculo bien las horas
@@ -175,4 +154,5 @@ g.push_edge("C", "Z", "100")
 # g.push_edge('B', 'Z', '2')
 # g.push_edge('A', 'Z', '2')
 # Path ["A", "Z"]
-puts g.shortest_path_between('A','Z')
+
+# puts g.shortest_path_between('A','Z')
