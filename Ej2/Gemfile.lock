@@ -1,0 +1,12 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    algorithms (0.6.1)
+    minitest (5.1.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  algorithms (= 0.6.1)
+  minitest (= 5.1.0)
