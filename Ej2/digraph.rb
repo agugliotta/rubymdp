@@ -7,8 +7,6 @@ class Edge
     def initialize(name)
         @name = name
         @destinations = Containers::Queue.new()
-        # blk = lambda { |x, y| (y <=> x) == 1 }
-        # @destinations = Containers::PriorityQueue.new(&blk)
     end
 
     def push_neighbor(node,value)
@@ -46,17 +44,11 @@ class Digraph
 
     def initialize
         blk = lambda { |x, y| (y <=> x) == 1 }
-        # @edges = Containers::PriorityQueue.new(&blk)
-        # @edges = Hash.new
         @list = []
-        # @vertices = []
         @vertices = Hash.new
     end
 
     def push_edge(node, destination, value)
-        # @edges[node] = edge
-        # @edges.push(destination,value)
-        # @vertices.push(node)
         @list.push({'origin' => node, 'destination' => destination, 'value' => value})
         if @vertices.has_key?(node)
             @vertices[node].push_neighbor(destination,value)
@@ -73,7 +65,6 @@ class Digraph
         end
     end
 
-
     def show
         v = []
         @vertices.each do |vertex, edges|
@@ -82,22 +73,10 @@ class Digraph
         v
     end
 
-    # def edge_value(origin,destination)
-    #     #always return the minimun value
-    #     values = []
-    #     @list.each do |info|
-    #         if info['origin'] == origin and info['destination'] == destination
-    #             values.push info['value'].to_i
-    #         end
-    #     end
-    #     values.sort.first
-    # end
-
     def shortest_path_between(origin,destination)
         infinite = 2 << 63
         distance = {}
         previous = {}
-        # value = 0
         blk = lambda { |x, y| (y <=> x) == 1 }
         nodes = Containers::PriorityQueue.new(&blk)
 
