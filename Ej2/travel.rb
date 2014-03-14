@@ -1,10 +1,6 @@
 require './digraph.rb'
 
 class Travel
-
-    # def initialize(flights_file)
-    #     read_flights(flights_file)
-    # end
     
     def read_flights(flights_file)
         f = File.open(flights_file)
